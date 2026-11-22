@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Quorik</string>
+    <string name="app_subtitle">BA Arts Free Notes &amp; Question Answer</string>
+    <string name="portal_tagline">BA Arts Free Study Portal</string>
+    <string name="search_placeholder">Search notes, PDF, Question &amp; Bank, syllabus...</string>
+    <string name="free_mode_badge">● 100% Free Mode</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_notes">Notes</string>
+    <string name="nav_qna">Q&amp;A</string>
+    <string name="nav_syllabus">Syllabus</string>
+    <string name="nav_notices">Notices</string>
+    <string name="nav_festivals">Festivals</string>
+    <string name="nav_holidays">Holidays</string>
+</resources>

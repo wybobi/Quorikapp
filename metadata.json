@@ -1,0 +1,6 @@
+{
+  "name": "Quorik",
+  "description": "BA Arts Free Study Portal with unit-wise notes, PDF export, solved Question & Bank, MCQ quizzes, official syllabi, exam notices, festivals, holidays, and Stealth Admin CMS.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

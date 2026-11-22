@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quorik by BOBI — Admin Panel</title>
+  <link rel="icon" href="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAQDAwMDAgQDAwMEBAQFBgoGBgUFBgwICQcKDgwPDg4MDQ0PERYTDxAVEQ0NExoTFRcYGRkZDxIbHRsYHRYYGRj/2wBDAQQEBAYFBgsGBgsYEA0QGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBj/wAARCAEAAQADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD51ooor9aPlQooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiigkAZYgD1P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AIaJ+Nn/AEUXVf8AviH/AON1m+HMS3zOav8AP/Ir+0KdrWZ+jtroHh+xulubLRNMtpl+7LDaxow+hC5FXLq1s760e1vbeC5gfhop0EiN9VOQa/Nb/hon42f9FF1X/viH/wCN0f8ADRPxs/6KLqv/AHxD/wDG6P8AVvEt351+P+Qf2hT7M/R/TdC0HR3d9I0bTdPZxhzaW0cJYe5UDNF5oWg6hdG5v9G026nICmWe1jkYgdBlgTX5wf8ADRPxs/6KLqv/AHxD/wDG6P8Ahon42f8ARRdV/wC+If8A43T/ANXMTe/Ovx/yF/aFPsz9I7HSdI0xnbTdMsbMuMMbaBIiw99oGakhsbC3vJ7u3s7WK4nIM00cSq8uOm5gMt+Nfmx/w0T8bP8Aoouq/wDfEP8A8bo/4aJ+Nn/RRdV/74h/+N0nw3iX9tfj/kP+0KfZn6Wy3EFtA9zcTJFDEpkkkdsKigZJJ7AAV+RuoSxz6vdzxNujknkkRvVS5IP5Gux8QfGf4qeKtCm0bX/HWrXmnzDEttvWNJR6NsUbh7HiuFr2soyueCUnOSbdtvI48XiVWtyrYKKKK9o4wooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAP/9k=" />
+  <link rel="apple-touch-icon" href="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAQDAwMDAgQDAwMEBAQFBgoGBgUFBgwICQcKDgwPDg4MDQ0PERYTDxAVEQ0NExoTFRcYGRkZDxIbHRsYHRYYGRj/2wBDAQQEBAYFBgsGBgsYEA0QGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBj/wAARCAEAAQADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD51ooor9aPlQooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiigkAZYgD1P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AIaJ+Nn/AEUXVf8AviH/AON1m+HMS3zOav8AP/Ir+0KdrWZ+jtroHh+xulubLRNMtpl+7LDaxow+hC5FXLq1s760e1vbeC5gfhop0EiN9VOQa/Nb/hon42f9FF1X/viH/wCN0f8ADRPxs/6KLqv/AHxD/wDG6P8AVvEt351+P+Qf2hT7M/R/TdC0HR3d9I0bTdPZxhzaW0cJYe5UDNF5oWg6hdG5v9G026nICmWe1jkYgdBlgTX5wf8ADRPxs/6KLqv/AHxD/wDG6P8Ahon42f8ARRdV/wC+If8A43T/ANXMTe/Ovx/yF/aFPsz9I7HSdI0xnbTdMsbMuMMbaBIiw99oGakhsbC3vJ7u3s7WK4nIM00cSq8uOm5gMt+Nfmx/w0T8bP8Aoouq/wDfEP8A8bo/4aJ+Nn/RRdV/74h/+N0nw3iX9tfj/kP+0KfZn6Wy3EFtA9zcTJFDEpkkkdsKigZJJ7AAV+RuoSxz6vdzxNujknkkRvVS5IP5Gux8QfGf4qeKtCm0bX/HWrXmnzDEttvWNJR6NsUbh7HiuFr2soyueCUnOSbdtvI48XiVWtyrYKKKK9o4wooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAP/9k=" />
+  <meta name="theme-color" content="#1E3B8B" />
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #F4F7FC;
+      color: #0F172A;
+    }
+    .card-elevated {
+      box-shadow: 0 8px 24px -4px rgba(30, 59, 139, 0.08), 0 2px 8px -2px rgba(15, 23, 42, 0.04);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- ==================== LOGIN SCREEN (PASSWORD: 9435149840) ==================== -->
+  <section id="loginScreen" class="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-[#102157] via-[#1E3B8B] to-[#294EB5]">
+    <div class="bg-white rounded-3xl max-w-sm w-full p-6 sm:p-7 shadow-2xl border border-white/20 space-y-5">
+      <div class="text-center space-y-2">
+        <div class="w-14 h-14 mx-auto rounded-2xl bg-gradient-to-br from-[#162C6B] via-[#1E3B8B] to-[#294EB5] text-white flex items-center justify-center shadow-lg">
+          <i data-lucide="shield-check" class="w-7 h-7"></i>
+        </div>
+        <h1 class="text-xl font-extrabold text-slate-900">Quorik by BOBI</h1>
+        <p class="text-xs font-semibold text-slate-500">Master Admin Control Panel • Real-Time Sync</p>
+      </div>
+
+      <form id="loginForm" class="space-y-3.5">
+        <div>
+          <label class="block text-[11px] font-extrabold uppercase tracking-wider text-slate-500 mb-1.5">Admin Password</label>
+          <div class="relative">
+            <input
+              type="password"
+              id="adminPasswordInput"
+              required
+              placeholder="Enter Admin Password"
+              class="w-full px-4 py-3 pr-11 rounded-2xl border border-slate-300 focus:border-[#1E3B8B] focus:outline-none text-sm font-bold tracking-wider bg-slate-50 focus:bg-white transition"
+            />
+            <button type="button" id="togglePwdBtn" class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700 p-1">
+              <i data-lucide="eye" class="w-4 h-4"></i>
+            </button>
+          </div>
+          <p id="loginErrorMsg" class="hidden text-xs font-bold text-rose-600 mt-1.5">Incorrect password! Try again.</p>
+        </div>
+
+        <button type="submit" class="w-full py-3 rounded-2xl bg-gradient-to-r from-[#162C6B] via-[#1E3B8B] to-[#294EB5] hover:opacity-95 text-white font-extrabold text-sm shadow-md transition">
+          Unlock Admin Panel →
+        </button>
+      </form>
+
+      <div class="pt-3 border-t border-slate-100 text-center">
+        <a href="Quorik — BA Arts Study Portal.html" target="_blank" class="text-xs font-bold text-[#1E3B8B] hover:underline">
+          Open Student Website ↗
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ADMIN DASHBOARD (UNLOCKED) ==================== -->
+  <div id="adminApp" class="hidden flex-1 flex flex-col">
+
+    <!-- Curved Royal Blue Header -->
+    <header class="sticky top-0 z-30 bg-gradient-to-r from-[#142864] via-[#1E3B8B] to-[#294EB5] text-white shadow-lg rounded-b-[28px] w-full">
+      <div class="max-w-6xl mx-auto px-4 py-3.5 flex flex-wrap items-center justify-between gap-3">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-2xl bg-white/15 border border-white/25 flex items-center justify-center">
+            <i data-lucide="sliders-horizontal" class="w-5 h-5 text-amber-300"></i>
+          </div>
+          <div>
+            <h1 class="text-base sm:text-lg font-extrabold tracking-tight">Quorik by BOBI</h1>
+            <div class="flex items-center gap-2 text-[11px] text-blue-100 font-semibold">
+              <span class="inline-flex items-center gap-1 text-emerald-300 font-bold">● Real-Time Sync Active</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2">
+          <a href="Quorik — BA Arts Study Portal.html" target="_blank" class="px-3 py-1.5 rounded-xl bg-white text-[#1E3B8B] hover:bg-blue-50 text-xs font-extrabold flex items-center gap-1 shadow-xs transition">
+            <span>Student App</span> <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          </a>
+          <button type="button" id="exportBackupBtn" class="px-3 py-1.5 rounded-xl bg-white/15 hover:bg-white/25 border border-white/20 text-xs font-bold transition">
+            Export JSON
+          </button>
+          <label class="px-3 py-1.5 rounded-xl bg-white/15 hover:bg-white/25 border border-white/20 text-xs font-bold cursor-pointer transition">
+            Import JSON
+            <input type="file" id="importBackupInput" accept=".json" class="hidden" />
+          </label>
+          <button type="button" id="logoutBtn" class="px-3 py-1.5 rounded-xl bg-rose-500/90 hover:bg-rose-600 text-xs font-extrabold transition">
+            Lock
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-1 max-w-6xl w-full mx-auto px-3 sm:px-5 py-5 space-y-5">
+
+      <!-- KPI Overview (Shown on Home) -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5" id="kpiGrid"></div>
+
+      <!-- Section Top Bar (Shown when inside a management section) -->
+      <div id="adminSectionHeaderBar" class="hidden flex items-center justify-between gap-2 bg-white rounded-2xl p-3.5 border border-slate-200/90 card-elevated">
+        <div class="flex items-center gap-2.5">
+          <button type="button" id="backToAdminHomeBtn" class="px-3 py-1.5 rounded-xl bg-[#1E3B8B] hover:bg-[#14296B] text-white text-xs font-extrabold flex items-center gap-1 transition">
+            <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i> Admin Home
+          </button>
+          <h2 id="adminSectionTitleText" class="text-sm sm:text-base font-extrabold text-slate-900">Manage</h2>
+        </div>
+        <span class="text-[11px] font-bold text-emerald-600">● Auto-Sync</span>
+      </div>
+
+      <!-- Main Workspace (01-08 Card Grid on Home, or Selected Management Section) -->
+      <div id="adminCardHomeWrap">
+        <div id="workspace"></div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- TOAST -->
+  <div id="toastBox" class="fixed bottom-5 right-5 z-50 space-y-2 pointer-events-none"></div>
+
+  <script>
+    const ADMIN_PASSWORD = '9435149840';
+    const STORAGE_KEY = 'quorik_free_arts_cms_v3';
+    const syncChannel = ('BroadcastChannel' in window) ? new BroadcastChannel('quorik_realtime_sync') : null;
+
+    const ARTS_SUBJECTS = ['History', 'Political Science', 'Assamese', 'Education', 'Sociology', 'Philosophy', 'Economics', 'English'];
+    const SEMESTERS = ['1st Semester', '2nd Semester', '3rd Semester', '4th Semester', '5th Semester', '6th Semester'];
+    const DEFAULT_LEVELS = ['Beginner', 'Intermediate', 'Honours / Major', 'Exam Special', 'Important', 'PYQ Solved'];
+
+    const DEFAULT_DB = {
+      banners: [
+        { id: 'ban-1', badge: '3rd Semester • History', title: 'History of East Asia: China & Japan (1839–1949)', subtitle: 'HIS4300204MJ • Unit 1–4 Free Notes & PDF', gradient: 'from-[#1E3B8B] via-[#1E3B8B] to-[#294EB5]', icon: 'book-open-check', targetType: 'note', targetId: 'note-his-301' },
+        { id: 'ban-2', badge: '3rd Semester • MDC', title: 'Land and People of Assam (অসমৰ ভূমি আৰু জনগণ)', subtitle: 'MDC0302603N • Complete Assamese & English Notes', gradient: 'from-[#064E3B] via-[#0F766E] to-[#0D9488]', icon: 'compass', targetType: 'note', targetId: 'note-mdc-302' },
+        { id: 'ban-3', badge: 'Exam Question & Bank', title: '1, 2, 5 & 10 Marks Solved Questions + MCQ Test', subtitle: 'Practice high-yield BA Arts exam answers free', gradient: 'from-[#311068] via-[#4C1D95] to-[#6D28D9]', icon: 'award', targetType: 'tab', targetId: 'qna' },
+        { id: 'ban-4', badge: 'Official Exam Routine', title: 'BA 1st, 3rd & 5th Semester Exam Schedule PDF', subtitle: 'Download official University timetable & circulars', gradient: 'from-[#7C2D12] via-[#9A3412] to-[#D97706]', icon: 'bell-ring', targetType: 'tab', targetId: 'notices' }
+      ],
+      staticBanners: [
+        { id: 'sban-1', badge: 'New Content', title: 'BA Arts Free Notes & Study PDFs', subtitle: 'All unit-wise guides & exam summaries ready to read', buttonText: 'Open Notes →', targetTab: 'notes', gradient: 'from-[#0F766E] via-[#0D9488] to-[#14B8A6]' },
+        { id: 'sban-2', badge: 'Fresh Program', title: 'FYUGP New Syllabus & Exam Routine', subtitle: 'Updated Major, Minor, MDC papers & official schedules', buttonText: 'Explore', targetTab: 'syllabus', gradient: 'from-[#142864] via-[#1E3B8B] to-[#294EB5]' },
+        { id: 'sban-3', badge: 'Exam Booster', title: 'Practice 5 Marks & Live MCQ Test', subtitle: 'Solved exam-ready answers & instant quiz practice', buttonText: 'Practice →', targetTab: 'qna', gradient: 'from-[#162C6B] via-[#1E3B8B] to-[#294EB5]' }
+      ],
+      pageBanners: {
+        notes: { badge: 'Study Library', title: 'BA Arts Notes & Free PDFs', subtitle: 'Unit-wise guides for Semesters 1 to 6', gradient: 'from-[#142864] via-[#1E3B8B] to-[#294EB5]', icon: 'book-open', imageData: '' },
+        notices: { badge: 'Official Updates', title: 'Exam Notices & Routines', subtitle: 'University circulars, form fill-up & schedules', gradient: 'from-[#7C2D12] via-[#B45309] to-[#D97706]', icon: 'bell-ring', imageData: '' },
+        syllabus: { badge: 'FYUGP Official', title: 'BA Arts Syllabus & Papers', subtitle: 'Major, Minor & MDC course structures', gradient: 'from-[#312E81] via-[#4338CA] to-[#6366F1]', icon: 'graduation-cap', imageData: '' },
+        festivals: { badge: 'Festivals Calendar', title: 'Assam & Cultural Festivals', subtitle: 'Tap any festival below to view full details & dates', gradient: 'from-[#142864] via-[#1E3B8B] to-[#294EB5]', icon: 'sparkles', imageData: '' },
+        holidays: { badge: 'Holiday List', title: 'Academic & University Holidays', subtitle: 'Tap any holiday card below for full details', gradient: 'from-[#064E3B] via-[#0F766E] to-[#0D9488]', icon: 'calendar-days', imageData: '' }
+      },
+      syllabusSemesters: [
+        { id: 'sem-1', name: '1st Semester', description: 'FYUGP BA Arts Semester 1 Major, Minor & MDC Syllabus' },
+        { id: 'sem-2', name: '2nd Semester', description: 'FYUGP BA Arts Semester 2 Major, Minor & MDC Syllabus' },
+        { id: 'sem-3', name: '3rd Semester', description: 'FYUGP BA Arts Semester 3 Major, Minor & MDC Syllabus' },
+        { id: 'sem-4', name: '4th Semester', description: 'FYUGP BA Arts Semester 4 Major, Minor & MDC Syllabus' },
+        { id: 'sem-5', name: '5th Semester', description: 'FYUGP BA Arts Semester 5 Major, Minor & Honours Syllabus' },
+        { id: 'sem-6', name: '6th Semester', description: 'FYUGP BA Arts Semester 6 Final Honours & Core Syllabus' }
+      ],
+      subjects: ['History', 'Political Science', 'Assamese', 'Education', 'Sociology', 'Philosophy', 'Economics', 'English'],
+      pages: [
+        { id: 'page-about', title: 'About Us', slug: 'about-us', icon: 'info', externalUrl: '', content: '<p>Welcome to Quorik — free BA Arts study portal.</p>' },
+        { id: 'page-privacy', title: 'Privacy Policy', slug: 'privacy-policy', icon: 'shield', externalUrl: '', content: '<p>Zero personal data collection.</p>' }
+      ],
+      notes: [],
+      qna: [],
+      mcqs: [],
+      syllabus: [],
+      notices: []
+    };
+
+    let db = loadDb();
+    let activeTab = 'home';
+    let editingNoteId = null;
+    let editingQnaId = null;
+    let editingMcqId = null;
+    let activeSectionTitle = 'Admin Dashboard';
+    let editingPageId = null;
+    let editingEventId = null;
+    let editingSylId = null;
+
+
+    function compressBannerImage(file, callback) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const img = new Image();
+        img.onload = () => {
+          const maxW = 1000;
+          const scale = img.width > maxW ? (maxW / img.width) : 1;
+          const canvas = document.createElement('canvas');
+          canvas.width = Math.round(img.width * scale);
+          canvas.height = Math.round(img.height * scale);
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+          callback(canvas.toDataURL('image/jpeg', 0.80));
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function readPdfAsDataUrl(file, callback) {
+      if (file.size > 2.5 * 1024 * 1024) {
+        showToast('PDF > 2.5MB: Please use Google Drive link for large PDFs!');
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = (e) => callback(e.target.result);
+      reader.readAsDataURL(file);
+    }
+
+    function loadDb() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (!parsed.staticBanners) parsed.staticBanners = JSON.parse(JSON.stringify(DEFAULT_DB.staticBanners));
+          if (!parsed.levels) parsed.levels = [...DEFAULT_LEVELS];
+          if (!Array.isArray(parsed.festivals)) parsed.festivals = [];
+          if (!Array.isArray(parsed.holidays)) parsed.holidays = [];
+          if (!Array.isArray(parsed.syllabusSemesters)) parsed.syllabusSemesters = JSON.parse(JSON.stringify(DEFAULT_DB.syllabusSemesters));
+          if (!Array.isArray(parsed.subjects)) parsed.subjects = [...ARTS_SUBJECTS];
+          if (!parsed.pageBanners) parsed.pageBanners = JSON.parse(JSON.stringify(DEFAULT_DB.pageBanners));
+          return parsed;
+        }
+      } catch (e) {}
+      const d = JSON.parse(JSON.stringify(DEFAULT_DB));
+      d.levels = [...DEFAULT_LEVELS];
+      return d;
+    }
+
+    function saveAndSync(msg = 'Saved & synced in real time!') {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(db));
+      if (syncChannel) {
+        syncChannel.postMessage({ type: 'DB_UPDATED', payload: db, timestamp: Date.now() });
+      }
+      showToast(msg, 'success');
+      renderApp();
+    }
+
+    function showToast(msg, type = 'info') {
+      const box = document.getElementById('toastBox');
+      const el = document.createElement('div');
+      el.className = `${type === 'success' ? 'bg-emerald-600' : 'bg-[#1E3B8B]'} text-white text-xs font-extrabold px-4 py-2.5 rounded-2xl shadow-lg pointer-events-auto`;
+      el.textContent = msg;
+      box.appendChild(el);
+      setTimeout(() => el.remove(), 2500);
+    }
+
+    // Listen to storage changes if student or another admin tab updates
+    window.addEventListener('storage', (e) => {
+      if (e.key === STORAGE_KEY) {
+        db = loadDb();
+        renderApp();
+      }
+    });
+
+    function renderApp() {
+      const levels = db.levels || DEFAULT_LEVELS;
+
+      document.getElementById('kpiGrid').innerHTML = `
+        <div class="bg-white p-3.5 rounded-2xl border border-slate-200"><div class="text-[11px] font-bold text-slate-500">Banners</div><div class="text-xl font-extrabold text-[#1E3B8B]">${(db.banners || []).length + (db.staticBanners || []).length}</div></div>
+        <div class="bg-white p-3.5 rounded-2xl border border-slate-200"><div class="text-[11px] font-bold text-slate-500">Notes</div><div class="text-xl font-extrabold text-emerald-600">${(db.notes || []).length}</div></div>
+        <div class="bg-white p-3.5 rounded-2xl border border-slate-200"><div class="text-[11px] font-bold text-slate-500">Q&amp;A Bank</div><div class="text-xl font-extrabold text-teal-600">${(db.qna || []).length}</div></div>
+        <div class="bg-white p-3.5 rounded-2xl border border-slate-200"><div class="text-[11px] font-bold text-slate-500">MCQs</div><div class="text-xl font-extrabold text-indigo-600">${(db.mcqs || []).length}</div></div>
+        <div class="bg-white p-3.5 rounded-2xl border border-slate-200"><div class="text-[11px] font-bold text-slate-500">Pages &amp; Links</div><div class="text-xl font-extrabold text-purple-600">${(db.pages || []).length}</div></div>
+        <div class="bg-white p-3.5 rounded-2xl border border-slate-200"><div class="text-[11px] font-bold text-slate-500">Levels</div><div class="text-xl font-extrabold text-amber-600">${levels.length}</div></div>
+      `;
+
+      const isHome = activeTab === 'home';
+      document.getElementById('kpiGrid').classList.toggle('hidden', !isHome);
+      document.getElementById('adminSectionHeaderBar').classList.toggle('hidden', isHome);
+      const wrapEl = document.getElementById('adminCardHomeWrap');
+      wrapEl.className = isHome
+        ? 'w-full'
+        : 'bg-white rounded-3xl p-4 sm:p-5 border border-slate-200/90 card-elevated';
+
+      if (isHome) {
+        const cards = [
+          { num: '01', tab: 'banners', title: 'Banners', desc: 'Main auto-slide, static & page top banners', count: `${(db.banners || []).length + (db.staticBanners || []).length} Banners`, featured: true },
+          { num: '02', tab: 'notes', title: 'Notes & PDFs', desc: 'Upload, edit, delete notes, levels & subjects', count: `${(db.notes || []).length} Notes`, featured: false },
+          { num: '03', tab: 'qna', title: 'Question & Answer', desc: 'Short/Long Q&As, images & PDF bank', count: `${(db.qna || []).length} Q&A`, featured: false },
+          { num: '04', tab: 'notices', title: 'Syllabus & Notices', desc: 'Manage semesters, subjects, syllabus PDFs & notices', count: `${(db.syllabus || []).length + (db.notices || []).length} Items`, featured: true },
+          { num: '05', tab: 'events', title: 'Festivals & Holidays', desc: 'Upload images, titles, dates & descriptions', count: `${(db.festivals || []).length + (db.holidays || []).length} Cards`, featured: false },
+          { num: '06', tab: 'pages', title: 'Sidebar Pages & URLs', desc: 'Edit page titles, link pages & custom URLs', count: `${(db.pages || []).length} Pages`, featured: false },
+          { num: '07', tab: 'mcq', title: 'MCQ Quiz Bank', desc: 'Add, edit & delete interactive MCQ tests', count: `${(db.mcqs || []).length} MCQs`, featured: false }
+        ];
+        document.getElementById('workspace').innerHTML = `
+          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3.5 w-full">
+            ${cards.map(c => c.featured ? `
+              <div data-open-atab="${c.tab}" data-atitle="${c.title}" class="admin-home-card cursor-pointer rounded-3xl p-4 sm:p-5 bg-gradient-to-br from-[#142864] via-[#1E3B8B] to-[#294EB5] text-white shadow-lg hover:scale-[1.01] transition flex flex-col justify-between min-h-[152px]">
+                <div class="flex items-start justify-between gap-2">
+                  <span class="text-4xl sm:text-5xl font-extrabold leading-none tracking-tight text-white/25">${c.num}</span>
+                  <span class="px-2.5 py-1 rounded-full bg-white text-[#1E3B8B] text-[10px] sm:text-[11px] font-extrabold shadow-xs">${c.count}</span>
+                </div>
+                <div class="mt-3 space-y-1">
+                  <h3 class="text-sm sm:text-base font-extrabold text-white leading-tight">${c.title}</h3>
+                  <p class="text-[11px] sm:text-xs text-blue-100/90 leading-snug line-clamp-2">${c.desc}</p>
+                </div>
+              </div>
+            ` : `
+              <div data-open-atab="${c.tab}" data-atitle="${c.title}" class="admin-home-card cursor-pointer rounded-3xl p-4 sm:p-5 bg-white text-slate-900 border border-slate-200/80 card-elevated hover:border-[#1E3B8B]/50 hover:shadow-md transition flex flex-col justify-between min-h-[152px]">
+                <div class="flex items-start justify-between gap-2">
+                  <span class="text-4xl sm:text-5xl font-extrabold leading-none tracking-tight text-[#1E3B8B]/20">${c.num}</span>
+                  <span class="px-2.5 py-1 rounded-full bg-[#1E3B8B]/10 text-[#1E3B8B] text-[10px] sm:text-[11px] font-extrabold">${c.count}</span>
+                </div>
+                <div class="mt-3 space-y-1">
+                  <h3 class="text-sm sm:text-base font-extrabold text-slate-900 leading-tight">${c.title}</h3>
+                  <p class="text-[11px] sm:text-xs text-slate-500 leading-snug line-clamp-2">${c.desc}</p>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        `;
+        document.querySelectorAll('.admin-home-card').forEach(card => {
+          card.addEventListener('click', () => {
+            activeTab = card.dataset.openAtab;
+            document.getElementById('adminSectionTitleText').textContent = card.dataset.atitle;
+            renderApp();
+          });
+        });
+        if (window.lucide) lucide.createIcons();
+        return;
+      }
+
+      const ws = document.getElementById('workspace');
+      const subjList = (db.subjects && db.subjects.length) ? db.subjects : ARTS_SUBJECTS;
+      const semList = (db.syllabusSemesters && db.syllabusSemesters.length) ? db.syllabusSemesters : DEFAULT_DB.syllabusSemesters;
+      const subjOpts = subjList.map(s => `<option value="${s}">${s}</option>`).join('');
+      const semOpts = semList.map(s => `<option value="${s.name}">${s.name}</option>`).join('');
+      const levelOpts = levels.map(l => `<option value="${l}">${l}</option>`).join('');
+
+      // 1. BANNERS TAB (Shows Position Name, Exact Size, Upload Status, Change/Edit, Save & Delete)
+      if (activeTab === 'banners') {
+        const pageMeta = {
+          notes: { pos: 'Notes Page — Top Header Banner', size: '1200 × 600 px (2:1 Ratio)' },
+          notices: { pos: 'Exam Notices Page — Top Header Banner', size: '1200 × 600 px (2:1 Ratio)' },
+          syllabus: { pos: 'Syllabus Page — Top Header Banner', size: '1200 × 600 px (2:1 Ratio)' },
+          festivals: { pos: 'Festivals Page — Top Header Banner', size: '1200 × 600 px (2:1 Ratio)' },
+          holidays: { pos: 'Holidays Page — Top Header Banner', size: '1200 × 600 px (2:1 Ratio)' }
+        };
+
+        ws.innerHTML = `
+          <div class="space-y-6">
+            <!-- Position 1: Home Page Top Auto-Slide Banners -->
+            <div class="space-y-3">
+              <div class="flex flex-wrap items-center justify-between gap-2 bg-blue-50/80 border border-blue-200 p-3.5 rounded-2xl">
+                <div>
+                  <span class="inline-block px-2 py-0.5 rounded-md bg-[#1E3B8B] text-white text-[10px] font-extrabold uppercase">Position: Home Page Top Carousel</span>
+                  <h2 class="text-sm sm:text-base font-extrabold text-slate-900 mt-1">Main Home Banners (Auto-Slide)</h2>
+                  <p class="text-xs font-bold text-[#1E3B8B]">Required Size: 1200 × 450 px (or 800 × 300 px • 2.5:1 Ratio)</p>
+                </div>
+                <button type="button" id="addMainBannerBtn" class="px-4 py-2 rounded-xl bg-[#1E3B8B] hover:bg-[#14296B] text-white text-xs font-extrabold shadow-xs transition">
+                  + Add New Banner
+                </button>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+                ${(db.banners || []).map((b, i) => `
+                  <div class="p-4 rounded-2xl border border-slate-200 bg-slate-50 space-y-2.5">
+                    <div class="flex items-center justify-between gap-2">
+                      <div>
+                        <div class="text-xs font-extrabold text-[#1E3B8B]">Position: Home Top Slide ${i + 1}</div>
+                        <div class="text-[10px] font-bold text-slate-500">Size: 1200 × 450 px (2.5:1)</div>
+                      </div>
+                      <span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold ${b.imageData ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-200 text-slate-600'}">
+                        ${b.imageData ? '● Uploaded' : '○ No Image'}
+                      </span>
+                    </div>
+
+                    ${b.imageData ? `
+                      <div class="relative h-32 rounded-xl overflow-hidden border border-slate-300 bg-white">
+                        <img src="${b.imageData}" class="w-full h-full object-cover" />
+                      </div>
+                    ` : `
+                      <div class="h-28 rounded-xl border-2 border-dashed border-slate-300 bg-white flex flex-col items-center justify-center text-slate-400 text-xs font-bold">
+                        <i data-lucide="image" class="w-6 h-6 mb-1"></i>
+                        <span>No Image Uploaded</span>
+                      </div>
+                    `}
+
+                    <div class="flex flex-wrap items-center gap-2">
+                      <label class="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-[#1E3B8B] hover:bg-[#14296B] text-white text-xs font-extrabold cursor-pointer transition">
+                        <i data-lucide="upload" class="w-3.5 h-3.5"></i>
+                        <span>${b.imageData ? 'Change / Edit' : 'Upload Image'}</span>
+                        <input type="file" accept="image/*" data-up-mimg="${i}" class="hidden" />
+                      </label>
+                      <button type="button" data-save-mban="${i}" class="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-extrabold transition">
+                        Save
+                      </button>
+                      <button type="button" data-del-mban="${i}" class="px-3.5 py-2 rounded-xl bg-rose-50 hover:bg-rose-600 hover:text-white text-rose-600 text-xs font-extrabold transition">
+                        Delete
+                      </button>
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+
+            <!-- Position 2–6: Sub-Page Top Banners (Notes, Notices, Syllabus, Festivals, Holidays) -->
+            <div class="pt-5 border-t border-slate-200 space-y-3">
+              <div class="bg-slate-100 border border-slate-200 p-3.5 rounded-2xl">
+                <span class="inline-block px-2 py-0.5 rounded-md bg-slate-800 text-white text-[10px] font-extrabold uppercase">Position: Inner Pages Top</span>
+                <h2 class="text-sm sm:text-base font-extrabold text-slate-900 mt-1">Page Top Banners (Notes, Notices, Syllabus, Festivals, Holidays)</h2>
+                <p class="text-xs font-bold text-[#1E3B8B]">Required Size: 1200 × 600 px (2:1 Ratio)</p>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5">
+                ${['notes', 'notices', 'syllabus', 'festivals', 'holidays'].map(pk => {
+                  const pb = (db.pageBanners && db.pageBanners[pk]) || DEFAULT_DB.pageBanners[pk];
+                  const meta = pageMeta[pk];
+                  return `
+                    <div class="p-4 rounded-2xl border border-slate-200 bg-slate-50 space-y-2.5">
+                      <div class="flex items-start justify-between gap-2">
+                        <div>
+                          <div class="text-xs font-extrabold text-[#1E3B8B]">${meta.pos}</div>
+                          <div class="text-[10px] font-bold text-slate-500">Size: ${meta.size}</div>
+                        </div>
+                        <span class="shrink-0 px-2 py-0.5 rounded-full text-[10px] font-extrabold ${pb.imageData ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-200 text-slate-600'}">
+                          ${pb.imageData ? '● Uploaded' : '○ Default'}
+                        </span>
+                      </div>
+                      ${pb.imageData ? `
+                        <div class="relative h-28 rounded-xl overflow-hidden border border-slate-300 bg-white">
+                          <img src="${pb.imageData}" class="w-full h-full object-cover" />
+                        </div>
+                      ` : `
+                        <div class="h-24 rounded-xl border-2 border-dashed border-slate-300 bg-white flex flex-col items-center justify-center text-slate-400 text-xs font-bold">
+                          <i data-lucide="image" class="w-5 h-5 mb-1"></i>
+                          <span>Default Gradient</span>
+                        </div>
+                      `}
+                      <div class="flex items-center gap-2">
+                        <label class="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-[#1E3B8B] hover:bg-[#14296B] text-white text-xs font-extrabold cursor-pointer transition">
+                          <i data-lucide="upload" class="w-3.5 h-3.5"></i>
+                          <span>${pb.imageData ? 'Change / Edit' : 'Upload'}</span>
+                          <input type="file" accept="image/*" data-up-pbimg="${pk}" class="hidden" />
+                        </label>
+                        ${pb.imageData ? `<button type="button" data-clr-pbimg="${pk}" class="px-3 py-2 rounded-xl bg-rose-50 hover:bg-rose-600 hover:text-white text-rose-600 text-xs font-extrabold transition">Delete</button>` : ''}
+                      </div>
+                    </div>
+                  `;
+                }).join('')}
+              </div>
+            </div>
+          </div>
+        `;
+
+        ws.querySelectorAll('[data-up-mimg]').forEach(inp => {
+          inp.addEventListener('change', (e) => {
+            const file = e.target.files && e.target.files[0];
+            if (!file) return;
+            const idx = parseInt(inp.dataset.upMimg, 10);
+            compressBannerImage(file, (dataUrl) => {
+              db.banners[idx].imageData = dataUrl;
+              saveAndSync(`Banner ${idx + 1} image uploaded & saved!`);
+            });
+          });
+        });
+
+        ws.querySelectorAll('[data-save-mban]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            saveAndSync(`Banner ${parseInt(btn.dataset.saveMban, 10) + 1} saved & synced!`);
+          });
+        });
+
+        ws.querySelectorAll('[data-del-mban]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const idx = parseInt(btn.dataset.delMban, 10);
+            db.banners.splice(idx, 1);
+            saveAndSync('Banner deleted & synced!');
+          });
+        });
+
+        document.getElementById('addMainBannerBtn').addEventListener('click', () => {
+          db.banners.push({ id: 'ban-' + Date.now(), badge: '', title: '', subtitle: '', gradient: 'from-[#1E3B8B] via-[#1E3B8B] to-[#294EB5]', icon: 'image', targetType: 'tab', targetId: 'notes', imageData: '' });
+          saveAndSync('Added new banner slot!');
+        });
+
+        ws.querySelectorAll('[data-up-pbimg]').forEach(inp => {
+          inp.addEventListener('change', (e) => {
+            const file = e.target.files && e.target.files[0];
+            if (!file) return;
+            const pk = inp.dataset.upPbimg;
+            compressBannerImage(file, (dataUrl) => {
+              if (!db.pageBanners) db.pageBanners = JSON.parse(JSON.stringify(DEFAULT_DB.pageBanners));
+              db.pageBanners[pk].imageData = dataUrl;
+              saveAndSync(`Uploaded ${pk} banner & synced!`);
+            });
+          });
+        });
+
+        ws.querySelectorAll('[data-clr-pbimg]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            db.pageBanners[btn.dataset.clrPbimg].imageData = '';
+            saveAndSync('Deleted page banner image!');
+          });
+        });
+      }
+
+      // 2. NOTES & LEVELS TAB (Upload, Edit, Delete Notes + Add Level)
+      else if (activeTab === 'notes') {
+        const editNote = editingNoteId ? (db.notes || []).find(n => n.id === editingNoteId) : null;
+        ws.innerHTML = `
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+            <div class="lg:col-span-5 space-y-4">
+              <form id="noteForm" class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2.5">
+                <div class="flex items-center justify-between">
+                  <h3 class="text-sm font-extrabold text-slate-900">${editNote ? 'Edit Note' : '+ Upload / Add Note'}</h3>
+                  ${editNote ? '<button type="button" id="cancelEditNoteBtn" class="text-xs font-bold text-rose-600">Cancel Edit</button>' : ''}
+                </div>
+                <input type="text" id="nTitle" required value="${editNote ? editNote.title : ''}" placeholder="Note Title" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs font-bold bg-white" />
+                <div class="grid grid-cols-2 gap-2">
+                  <input type="text" id="nCode" required value="${editNote ? editNote.paperCode : ''}" placeholder="Paper Code" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs bg-white" />
+                  <select id="nLevel" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs font-bold bg-white">${levelOpts}</select>
+                </div>
+                <div class="grid grid-cols-3 gap-2">
+                  <select id="nSubject" class="px-2 py-2 rounded-xl border border-slate-300 text-xs font-semibold bg-white">${subjOpts}</select>
+                  <select id="nSem" class="px-2 py-2 rounded-xl border border-slate-300 text-xs font-semibold bg-white">${semOpts}</select>
+                  <select id="nMedium" class="px-2 py-2 rounded-xl border border-slate-300 text-xs font-semibold bg-white">
+                    <option value="Assamese">Assamese</option>
+                    <option value="English">English</option>
+                  </select>
+                </div>
+                <input type="text" id="nPdfUrl" value="${editNote && editNote.pdfUrl ? editNote.pdfUrl : ''}" placeholder="Optional PDF / Drive Link (https://...)" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs bg-white" />
+                <textarea id="nSummary" rows="2" required placeholder="Short Description..." class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs bg-white">${editNote ? editNote.summary : ''}</textarea>
+                <input type="text" id="nUnitTitle" required value="${editNote && editNote.topics && editNote.topics[0] ? editNote.topics[0].title : 'Unit 1: Introduction'}" placeholder="Unit 1 Heading" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs font-semibold bg-white" />
+                <textarea id="nBody" rows="4" required placeholder="Full Note Content..." class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs bg-white">${editNote && editNote.topics && editNote.topics[0] ? editNote.topics[0].content.replace(/<[^>]+>/g, '') : ''}</textarea>
+                <button type="submit" class="w-full py-2.5 rounded-xl bg-[#1E3B8B] hover:bg-[#14296B] text-white text-xs font-extrabold">
+                  ${editNote ? 'Update Note & Sync' : 'Upload Note & Sync'}
+                </button>
+              </form>
+
+              <!-- Add / Remove Notes Subjects Box -->
+              <form id="addNoteSubjForm" class="bg-emerald-50/70 p-4 rounded-2xl border border-emerald-200 space-y-2">
+                <h4 class="text-xs font-extrabold text-emerald-950">+ Add / Remove Notes Subject</h4>
+                <div class="flex gap-2">
+                  <input type="text" id="newNoteSubjInput" required placeholder="e.g. Geography / Sanskrit" class="flex-1 px-3 py-1.5 rounded-xl border border-emerald-300 text-xs font-bold bg-white" />
+                  <button type="submit" class="px-3.5 py-1.5 rounded-xl bg-emerald-600 text-white text-xs font-extrabold">Add Subject</button>
+                </div>
+                <div class="flex flex-wrap gap-1.5 pt-1">
+                  ${subjList.map((sj, idx) => `<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-white border border-emerald-200 text-[11px] font-bold text-slate-700">${sj} <button type="button" data-del-nsj="${idx}" class="text-rose-600 font-extrabold">×</button></span>`).join('')}
+                </div>
+              </form>
+
+              <!-- Add Custom Level Box -->
+              <form id="addLevelForm" class="bg-amber-50/70 p-4 rounded-2xl border border-amber-200 space-y-2">
+                <h4 class="text-xs font-extrabold text-amber-950">+ Add New Level</h4>
+                <div class="flex gap-2">
+                  <input type="text" id="newLevelInput" required placeholder="e.g. Level 1 / Topper Notes" class="flex-1 px-3 py-1.5 rounded-xl border border-amber-300 text-xs font-bold bg-white" />
+                  <button type="submit" class="px-3.5 py-1.5 rounded-xl bg-amber-600 text-white text-xs font-extrabold">Add Level</button>
+                </div>
+                <div class="flex flex-wrap gap-1.5 pt-1">
+                  ${levels.map((l, idx) => `<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-white border border-amber-200 text-[11px] font-bold text-slate-700">${l} <button type="button" data-del-lvl="${idx}" class="text-rose-600 font-extrabold">×</button></span>`).join('')}
+                </div>
+              </form>
+            </div>
+
+            <div class="lg:col-span-7 space-y-2.5">
+              <h3 class="text-sm font-extrabold text-slate-900">All Uploaded Notes (${(db.notes || []).length})</h3>
+              ${(db.notes || []).map(n => `
+                <div class="p-3.5 rounded-2xl border border-slate-200 bg-white flex items-center justify-between gap-3">
+                  <div class="min-w-0 flex-1">
+                    <div class="flex flex-wrap items-center gap-1.5 mb-1">
+                      <span class="px-2 py-0.5 rounded-md bg-blue-50 text-[#1E3B8B] text-[10px] font-extrabold">${n.semester} • ${n.subject}</span>
+                      ${n.level ? `<span class="px-2 py-0.5 rounded-md bg-amber-100 text-amber-900 text-[10px] font-extrabold">${n.level}</span>` : ''}
+                    </div>
+                    <div class="text-xs sm:text-sm font-extrabold text-slate-900 truncate">${n.title}</div>
+                    <div class="text-[11px] text-slate-500 truncate">${n.summary}</div>
+                  </div>
+                  <div class="flex items-center gap-1.5 shrink-0">
+                    <button type="button" data-edit-note="${n.id}" class="px-3 py-1.5 rounded-xl bg-blue-50 hover:bg-[#1E3B8B] hover:text-white text-[#1E3B8B] text-xs font-bold transition">Edit</button>
+                    <button type="button" data-del-note="${n.id}" class="px-3 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-600 hover:text-white text-rose-600 text-xs font-bold transition">Delete</button>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+
+        if (editNote) {
+          document.getElementById('nSubject').value = editNote.subject;
+          document.getElementById('nSem').value = editNote.semester;
+          document.getElementById('nMedium').value = editNote.medium;
+          if (editNote.level) document.getElementById('nLevel').value = editNote.level;
+          document.getElementById('cancelEditNoteBtn').addEventListener('click', () => {
+            editingNoteId = null;
+            renderApp();
+          });
+        }
+
+        document.getElementById('noteForm').addEventListener('submit', e => {
+          e.preventDefault();
+          const noteObj = {
+            id: editNote ? editNote.id : 'note-' + Date.now(),
+            title: document.getElementById('nTitle').value.trim(),
+            paperCode: document.getElementById('nCode').value.trim(),
+            level: document.getElementById('nLevel').value,
+            subject: document.getElementById('nSubject').value,
+            semester: document.getElementById('nSem').value,
+            medium: document.getElementById('nMedium').value,
+            pdfUrl: document.getElementById('nPdfUrl').value.trim(),
+            date: editNote && editNote.date ? editNote.date : new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }),
+            rating: editNote ? editNote.rating : 5.0,
+            pages: editNote ? editNote.pages : 32,
+            summary: document.getElementById('nSummary').value.trim(),
+            topics: [{
+              title: document.getElementById('nUnitTitle').value.trim(),
+              aiTakeaway: document.getElementById('nSummary').value.trim(),
+              content: `<p>${document.getElementById('nBody').value.trim().replace(/\n/g, '</p><p>')}</p>`
+            }]
+          };
+          if (editNote) {
+            const idx = db.notes.findIndex(x => x.id === editNote.id);
+            if (idx >= 0) db.notes[idx] = noteObj;
+            editingNoteId = null;
+            saveAndSync('Note updated & synced!');
+          } else {
+            db.notes.unshift(noteObj);
+            saveAndSync('New Note uploaded & synced!');
+          }
+        });
+
+        document.getElementById('addNoteSubjForm').addEventListener('submit', e => {
+          e.preventDefault();
+          const val = document.getElementById('newNoteSubjInput').value.trim();
+          if (!Array.isArray(db.subjects)) db.subjects = [...ARTS_SUBJECTS];
+          if (val && !db.subjects.includes(val)) db.subjects.push(val);
+          saveAndSync(`Added Notes Subject "${val}"!`);
+        });
+        ws.querySelectorAll('[data-del-nsj]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            db.subjects.splice(parseInt(btn.dataset.delNsj, 10), 1);
+            saveAndSync('Removed Notes Subject!');
+          });
+        });
+
+        document.getElementById('addLevelForm').addEventListener('submit', e => {
+          e.preventDefault();
+          const val = document.getElementById('newLevelInput').value.trim();
+          if (!val) return;
+          if (!db.levels) db.levels = [...DEFAULT_LEVELS];
+          if (!db.levels.includes(val)) db.levels.push(val);
+          saveAndSync(`Added level "${val}"!`);
+        });
+
+        ws.querySelectorAll('[data-del-lvl]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            db.levels.splice(parseInt(btn.dataset.delLvl, 10), 1);
+            saveAndSync('Removed level!');
+          });
+        });
+
+        ws.querySelectorAll('[data-edit-note]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            editingNoteId = btn.dataset.editNote;
+            renderApp();
+          });
+        });
+
+        ws.querySelectorAll('[data-del-note]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            db.notes = db.notes.filter(x => x.id !== btn.dataset.delNote);
+            saveAndSync('Note deleted & synced!');
+          });
+        });
+      }
+
+      // 3. QUESTION & BANK (Add, Edit, Delete Q&A + Level)
+      else if (activeTab === 'qna') {
+        const editQ = editingQnaId ? (db.qna || []).find(q => q.id === editingQnaId) : null;
+        ws.innerHTML = `
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+            <form id="qnaForm" class="lg:col-span-5 bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2.5">
+              <div class="flex items-center justify-between">
+                <h3 class="text-sm font-extrabold text-slate-900">${editQ ? 'Edit Question' : '+ Add Question & Bank'}</h3>
+                ${editQ ? '<button type="button" id="cancelEditQnaBtn" class="text-xs font-bold text-rose-600">Cancel</button>' : ''}
+              </div>
+              <div class="grid grid-cols-2 gap-2">
+                <select id="qSubj" class="px-2.5 py-2 rounded-xl border border-slate-300 text-xs font-semibold bg-white">${subjOpts}</select>
+                <select id="qSem" class="px-2.5 py-2 rounded-xl border border-slate-300 text-xs font-semibold bg-white">${semOpts}</select>
+              </div>
+              <div class="grid grid-cols-3 gap-2">
+                <select id="qMarks" class="px-2 py-2 rounded-xl border border-slate-300 text-xs font-semibold bg-white">
+                  <option value="Short Question">Short Question</option>
+                  <option value="Long Question">Long Question</option>
+                  <option value="1 Mark">1 Mark</option>
+                  <option value="2 Marks">2 Marks</option>
+                  <option value="5 Marks">5 Marks</option>
+                  <option value="10 Marks">10 Marks</option>
+                </select>
+                <select id="qLevel" class="px-2 py-2 rounded-xl border border-slate-300 text-xs font-semibold bg-white">${levelOpts}</select>
+                <select id="qMed" class="px-2 py-2 rounded-xl border border-slate-300 text-xs font-semibold bg-white">
+                  <option value="Assamese">Assamese</option>
+                  <option value="English">English</option>
+                </select>
+              </div>
+              <input type="text" id="qQuestion" required value="${editQ ? editQ.question : ''}" placeholder="Question / Card Title..." class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs font-bold bg-white" />
+              <input type="text" id="qDesc" value="${editQ && editQ.description ? editQ.description : ''}" placeholder="Short Description for List Card (optional)" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs bg-white" />
+              <textarea id="qAnswer" rows="4" required placeholder="Full Answer (shown when user clicks card)..." class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs bg-white">${editQ ? editQ.answer : ''}</textarea>
+              <div id="qImgPreviewWrap" class="${editQ && editQ.imageData ? '' : 'hidden'} relative h-24 rounded-xl overflow-hidden border border-slate-300">
+                <img id="qImgPreview" src="${editQ && editQ.imageData ? editQ.imageData : ''}" class="w-full h-full object-cover" />
+              </div>
+              <label class="flex items-center justify-center gap-1.5 w-full py-2 rounded-xl border border-dashed border-[#1E3B8B]/50 bg-blue-50/50 hover:bg-blue-50 text-[#1E3B8B] text-xs font-extrabold cursor-pointer transition">
+                <i data-lucide="image-plus" class="w-4 h-4"></i>
+                <span>${editQ && editQ.imageData ? 'Change Question Image' : 'Upload Card Image (Optional)'}</span>
+                <input type="file" id="qImageFile" accept="image/*" class="hidden" />
+              </label>
+              <button type="submit" class="w-full py-2.5 rounded-xl bg-[#1E3B8B] hover:bg-[#14296B] text-white text-xs font-extrabold">
+                ${editQ ? 'Update Question' : 'Save Question & Sync'}
+              </button>
+            </form>
+
+            <div class="lg:col-span-7 space-y-2.5">
+              <h3 class="text-sm font-extrabold text-slate-900">All Questions (${(db.qna || []).length})</h3>
+              ${(db.qna || []).map(q => `
+                <div class="p-3.5 rounded-2xl border border-slate-200 bg-white flex items-center justify-between gap-3">
+                  <div class="min-w-0 flex-1">
+                    <div class="flex flex-wrap gap-1.5 mb-1">
+                      <span class="px-2 py-0.5 rounded-md bg-teal-50 text-teal-800 text-[10px] font-extrabold">${q.marks} • ${q.subject}</span>
+                      ${q.level ? `<span class="px-2 py-0.5 rounded-md bg-amber-100 text-amber-900 text-[10px] font-extrabold">${q.level}</span>` : ''}
+                    </div>
+                    <div class="text-xs font-extrabold text-slate-900">${q.question}</div>
+                  </div>
+                  <div class="flex items-center gap-1.5 shrink-0">
+                    <button type="button" data-edit-qna="${q.id}" class="px-3 py-1.5 rounded-xl bg-blue-50 text-[#1E3B8B] text-xs font-bold">Edit</button>
+                    <button type="button" data-del-qna="${q.id}" class="px-3 py-1.5 rounded-xl bg-rose-50 text-rose-600 text-xs font-bold">Delete</button>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+
+        if (editQ) {
+          document.getElementById('qSubj').value = editQ.subject;
+          document.getElementById('qSem').value = editQ.semester;
+          document.getElementById('qMarks').value = editQ.marks;
+          document.getElementById('qMed').value = editQ.medium;
+          if (editQ.level) document.getElementById('qLevel').value = editQ.level;
+          document.getElementById('cancelEditQnaBtn').addEventListener('click', () => {
+            editingQnaId = null;
+            renderApp();
+          });
+        }
+
+        let uploadedQnaImg = editQ && editQ.imageData ? editQ.imageData : '';
+        document.getElementById('qImageFile').addEventListener('change', e => {
+          const f = e.target.files && e.target.files[0];
+          if (f) compressBannerImage(f, (dataUrl) => {
+            uploadedQnaImg = dataUrl;
+            document.getElementById('qImgPreview').src = dataUrl;
+            document.getElementById('qImgPreviewWrap').classList.remove('hidden');
+            showToast('Question image ready!', 'success');
+          });
+        });
+        document.getElementById('qnaForm').addEventListener('submit', e => {
+          e.preventDefault();
+          const obj = {
+            id: editQ ? editQ.id : 'qna-' + Date.now(),
+            subject: document.getElementById('qSubj').value,
+            semester: document.getElementById('qSem').value,
+            marks: document.getElementById('qMarks').value,
+            level: document.getElementById('qLevel').value,
+            medium: document.getElementById('qMed').value,
+            date: editQ && editQ.date ? editQ.date : new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }),
+            rating: editQ ? editQ.rating : 5.0,
+            question: document.getElementById('qQuestion').value.trim(),
+            description: document.getElementById('qDesc').value.trim(),
+            answer: document.getElementById('qAnswer').value.trim(),
+            imageData: uploadedQnaImg
+          };
+          if (editQ) {
+            const idx = db.qna.findIndex(x => x.id === editQ.id);
+            if (idx >= 0) db.qna[idx] = obj;
+            editingQnaId = null;
+            saveAndSync('Question updated!');
+          } else {
+            db.qna.unshift(obj);
+            saveAndSync('Question added & synced!');
+          }
+        });
+
+        ws.querySelectorAll('[data-edit-qna]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            editingQnaId = btn.dataset.editQna;
+            renderApp();
+          });
+        });
+
+        ws.querySelectorAll('[data-del-qna]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            db.qna = db.qna.filter(x => x.id !== btn.dataset.delQna);
+            saveAndSync('Question deleted!');
+          });
+        });
+      }
+
+      // 4. MCQ QUIZ TAB (Add, Edit, Delete MCQs)
+      else if (activeTab === 'mcq') {
+        const editM = editingMcqId ? (db.mcqs || []).find(m => m.id === editingMcqId) : null;
+        ws.innerHTML = `
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+            <form id="mcqForm" class="lg:col-span-5 bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2">
+              <div class="flex items-center justify-between">
+                <h3 class="text-sm font-extrabold text-slate-900">${editM ? 'Edit MCQ' : '+ Add MCQ'}</h3>
+                ${editM ? '<button type="button" id="cancelEditMcqBtn" class="text-xs font-bold text-rose-600">Cancel</button>' : ''}
+              </div>
+              <select id="mSubj" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs font-semibold bg-white">${subjOpts}</select>
+              <input type="text" id="mQ" required value="${editM ? editM.question : ''}" placeholder="MCQ Question..." class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs font-bold bg-white" />
+              <input type="text" id="mO0" required value="${editM ? editM.options[0] : ''}" placeholder="Option A" class="w-full px-3 py-1.5 rounded-xl border border-slate-300 text-xs bg-white" />
+              <input type="text" id="mO1" required value="${editM ? editM.options[1] : ''}" placeholder="Option B" class="w-full px-3 py-1.5 rounded-xl border border-slate-300 text-xs bg-white" />
+              <input type="text" id="mO2" required value="${editM ? editM.options[2] : ''}" placeholder="Option C" class="w-full px-3 py-1.5 rounded-xl border border-slate-300 text-xs bg-white" />
+              <input type="text" id="mO3" required value="${editM ? editM.options[3] : ''}" placeholder="Option D" class="w-full px-3 py-1.5 rounded-xl border border-slate-300 text-xs bg-white" />
+              <select id="mCorrect" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs font-bold bg-white">
+                <option value="0">Correct: Option A</option>
+                <option value="1">Correct: Option B</option>
+                <option value="2">Correct: Option C</option>
+                <option value="3">Correct: Option D</option>
+              </select>
+              <input type="text" id="mExp" required value="${editM ? editM.explanation : ''}" placeholder="Explanation..." class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs bg-white" />
+              <button type="submit" class="w-full py-2.5 rounded-xl bg-[#1E3B8B] text-white text-xs font-extrabold">${editM ? 'Update MCQ' : 'Save MCQ & Sync'}</button>
+            </form>
+            <div class="lg:col-span-7 space-y-2">
+              ${(db.mcqs || []).map(m => `
+                <div class="p-3.5 rounded-2xl border border-slate-200 bg-white flex items-center justify-between gap-2">
+                  <div class="text-xs font-bold text-slate-900">${m.question}</div>
+                  <div class="flex items-center gap-1.5 shrink-0">
+                    <button type="button" data-edit-mcq="${m.id}" class="px-2.5 py-1 rounded-lg bg-blue-50 text-[#1E3B8B] text-xs font-bold">Edit</button>
+                    <button type="button" data-del-mcq="${m.id}" class="px-2.5 py-1 rounded-lg bg-rose-50 text-rose-600 text-xs font-bold">Delete</button>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+        if (editM) {
+          document.getElementById('mSubj').value = editM.subject;
+          document.getElementById('mCorrect').value = String(editM.correctIndex);
+          document.getElementById('cancelEditMcqBtn').addEventListener('click', () => { editingMcqId = null; renderApp(); });
+        }
+        document.getElementById('mcqForm').addEventListener('submit', e => {
+          e.preventDefault();
+          const obj = {
+            id: editM ? editM.id : 'mcq-' + Date.now(),
+            subject: document.getElementById('mSubj').value,
+            question: document.getElementById('mQ').value.trim(),
+            options: [document.getElementById('mO0').value.trim(), document.getElementById('mO1').value.trim(), document.getElementById('mO2').value.trim(), document.getElementById('mO3').value.trim()],
+            correctIndex: parseInt(document.getElementById('mCorrect').value, 10),
+            explanation: document.getElementById('mExp').value.trim()
+          };
+          if (editM) {
+            const idx = db.mcqs.findIndex(x => x.id === editM.id);
+            if (idx >= 0) db.mcqs[idx] = obj;
+            editingMcqId = null;
+            saveAndSync('MCQ updated!');
+          } else {
+            db.mcqs.push(obj);
+            saveAndSync('MCQ added!');
+          }
+        });
+        ws.querySelectorAll('[data-edit-mcq]').forEach(b => b.addEventListener('click', () => { editingMcqId = b.dataset.editMcq; renderApp(); }));
+        ws.querySelectorAll('[data-del-mcq]').forEach(b => b.addEventListener('click', () => { db.mcqs = db.mcqs.filter(x => x.id !== b.dataset.delMcq); saveAndSync('MCQ deleted!'); }));
+      }
+
+      // 5. PAGES & LINKS UPLOAD SYSTEM
+      else if (activeTab === 'pages') {
+        const editP = editingPageId ? (db.pages || []).find(p => p.id === editingPageId) : null;
+        ws.innerHTML = `
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+            <form id="pageForm" class="lg:col-span-5 bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2.5">
+              <div class="flex items-center justify-between">
+                <h3 class="text-sm font-extrabold text-slate-900">${editP ? 'Edit Page / Link' : '+ Upload / Add Page Link'}</h3>
+                ${editP ? '<button type="button" id="cancelEditPageBtn" class="text-xs font-bold text-rose-600">Cancel</button>' : ''}
+              </div>
+              <input type="text" id="pTitle" required value="${editP ? editP.title : ''}" placeholder="Page Name (e.g. Official PDF Links)" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs font-bold bg-white" />
+              <input type="text" id="pSlug" required value="${editP ? editP.slug : ''}" placeholder="Slug (e.g. pdf-links)" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs bg-white" />
+              <select id="pLinkSelect" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs font-semibold bg-white">
+                <option value="">-- Link to a Specific App Page (Optional) --</option>
+                <option value="#/page/about-us">About Us (#/page/about-us)</option>
+                <option value="#/page/privacy-policy">Privacy Policy (#/page/privacy-policy)</option>
+                <option value="#/page/terms-conditions">Terms &amp; Conditions</option>
+                <option value="#/page/contact-us">Contact &amp; Support</option>
+                ${(db.pages || []).map(pg => `<option value="#/page/${pg.slug}">${pg.title} (#/page/${pg.slug})</option>`).join('')}
+              </select>
+              <input type="text" id="pUrl" value="${editP && editP.externalUrl ? editP.externalUrl : ''}" placeholder="Or Submit Custom URL (https://...)" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs bg-white" />
+              <textarea id="pContent" rows="4" required placeholder="Page Content..." class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs bg-white">${editP ? editP.content.replace(/<[^>]+>/g, '') : ''}</textarea>
+              <button type="submit" class="w-full py-2.5 rounded-xl bg-[#1E3B8B] text-white text-xs font-extrabold">${editP ? 'Update Page & Link' : 'Upload Page & Sync'}</button>
+            </form>
+            <div class="lg:col-span-7 space-y-2.5">
+              <h3 class="text-sm font-extrabold text-slate-900">Active Sidebar Pages &amp; Links</h3>
+              ${(db.pages || []).map(p => `
+                <div class="p-3.5 rounded-2xl border border-slate-200 bg-white flex items-center justify-between gap-2">
+                  <div class="min-w-0 flex-1">
+                    <div class="text-xs font-extrabold text-slate-900">${p.title}</div>
+                    <div class="text-[11px] text-[#1E3B8B] font-semibold truncate">${p.externalUrl || '#/page/' + p.slug}</div>
+                  </div>
+                  <div class="flex items-center gap-1.5 shrink-0">
+                    <button type="button" data-edit-page="${p.id}" class="px-2.5 py-1 rounded-lg bg-blue-50 text-[#1E3B8B] text-xs font-bold">Edit</button>
+                    <button type="button" data-del-page="${p.id}" class="px-2.5 py-1 rounded-lg bg-rose-50 text-rose-600 text-xs font-bold">Delete</button>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+        if (editP) {
+          document.getElementById('cancelEditPageBtn').addEventListener('click', () => { editingPageId = null; renderApp(); });
+        }
+        document.getElementById('pLinkSelect').addEventListener('change', e => { if (e.target.value) document.getElementById('pUrl').value = e.target.value; });
+        document.getElementById('pTitle').addEventListener('input', e => {
+          if (!editP) document.getElementById('pSlug').value = e.target.value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+        });
+        document.getElementById('pageForm').addEventListener('submit', e => {
+          e.preventDefault();
+          const obj = {
+            id: editP ? editP.id : 'page-' + Date.now(),
+            title: document.getElementById('pTitle').value.trim(),
+            slug: document.getElementById('pSlug').value.trim() || 'custom-page',
+            icon: 'file-text',
+            externalUrl: document.getElementById('pUrl').value.trim(),
+            content: `<p>${document.getElementById('pContent').value.trim().replace(/\n/g, '</p><p>')}</p>`
+          };
+          if (editP) {
+            const idx = db.pages.findIndex(x => x.id === editP.id);
+            if (idx >= 0) db.pages[idx] = obj;
+            editingPageId = null;
+            saveAndSync('Page & link updated!');
+          } else {
+            db.pages.push(obj);
+            saveAndSync('Page & link uploaded!');
+          }
+        });
+        ws.querySelectorAll('[data-edit-page]').forEach(b => b.addEventListener('click', () => { editingPageId = b.dataset.editPage; renderApp(); }));
+        ws.querySelectorAll('[data-del-page]').forEach(b => b.addEventListener('click', () => { db.pages = db.pages.filter(x => x.id !== b.dataset.delPage); saveAndSync('Page deleted!'); }));
+      }
+
+      // 6. NOTICES & SYLLABUS TAB
+      else if (activeTab === 'notices') {
+        ws.innerHTML = `
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+            <div class="space-y-3">
+              <form id="noticeForm" class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2">
+                <h3 class="text-sm font-extrabold text-slate-900">+ Post Exam Notice</h3>
+                <input type="text" id="notTitle" required placeholder="Notice Title" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs font-bold bg-white" />
+                <div class="grid grid-cols-2 gap-2">
+                  <select id="notCat" class="px-2.5 py-2 rounded-xl border border-slate-300 text-xs bg-white">
+                    <option value="Exam Routine">Exam Routine</option>
+                    <option value="Form Fill-up">Form Fill-up</option>
+                    <option value="Result / Circular">Result / Circular</option>
+                  </select>
+                  <input type="text" id="notDate" required value="19 Nov 2026" class="px-3 py-2 rounded-xl border border-slate-300 text-xs bg-white" />
+                </div>
+                <textarea id="notDesc" rows="2" required placeholder="Description..." class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs bg-white"></textarea>
+                <label class="flex items-center justify-center gap-1.5 w-full py-1.5 rounded-xl border border-dashed border-amber-500/60 bg-amber-50/50 text-amber-800 text-[11px] font-extrabold cursor-pointer">
+                  <i data-lucide="image-plus" class="w-3.5 h-3.5"></i>
+                  <span>Upload Notice Image (Optional)</span>
+                  <input type="file" id="notImageFile" accept="image/*" class="hidden" />
+                </label>
+                <button type="submit" class="w-full py-2 rounded-xl bg-amber-600 text-white text-xs font-extrabold">Publish Notice &amp; Sync</button>
+              </form>
+              <div class="space-y-2">
+                ${(db.notices || []).map(n => `
+                  <div class="p-3 rounded-xl border border-slate-200 bg-white flex items-center justify-between gap-2">
+                    <div class="text-xs font-bold text-slate-900 truncate">${n.title}</div>
+                    <button type="button" data-del-not="${n.id}" class="px-2.5 py-1 rounded-lg bg-rose-50 text-rose-600 text-xs font-bold shrink-0">Delete</button>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+
+            <div class="space-y-4">
+              <!-- Semester List Manager (Title + Description) -->
+              <form id="semMgrForm" class="bg-blue-50/70 p-4 rounded-2xl border border-blue-200 space-y-2">
+                <h3 class="text-xs font-extrabold text-[#1E3B8B]">+ Add Semester (Syllabus List View)</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <input type="text" id="newSemName" required placeholder="Semester Name (e.g. 7th Semester)" class="px-3 py-1.5 rounded-xl border border-blue-300 text-xs font-bold bg-white" />
+                  <input type="text" id="newSemDesc" required placeholder="Short Description" class="px-3 py-1.5 rounded-xl border border-blue-300 text-xs bg-white" />
+                </div>
+                <button type="submit" class="px-4 py-1.5 rounded-xl bg-[#1E3B8B] text-white text-xs font-extrabold">Add Semester</button>
+                <div class="flex flex-wrap gap-1.5 pt-1">
+                  ${semList.map((sm, idx) => `<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-lg bg-white border border-blue-200 text-[11px] font-bold text-slate-700">${sm.name} <button type="button" data-del-sem="${idx}" class="text-rose-600 font-extrabold">×</button></span>`).join('')}
+                </div>
+              </form>
+
+              <!-- Subject Manager (Add / Remove Subjects) -->
+              <form id="subjMgrForm" class="bg-emerald-50/70 p-4 rounded-2xl border border-emerald-200 space-y-2">
+                <h3 class="text-xs font-extrabold text-emerald-900">+ Add / Remove Subjects</h3>
+                <div class="flex gap-2">
+                  <input type="text" id="newSubjName" required placeholder="Subject Name (e.g. Geography)" class="flex-1 px-3 py-1.5 rounded-xl border border-emerald-300 text-xs font-bold bg-white" />
+                  <button type="submit" class="px-4 py-1.5 rounded-xl bg-emerald-600 text-white text-xs font-extrabold">Add Subject</button>
+                </div>
+                <div class="flex flex-wrap gap-1.5 pt-1">
+                  ${subjList.map((sj, idx) => `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-lg bg-white border border-emerald-200 text-[11px] font-bold text-slate-700">${sj} <button type="button" data-edit-subj="${idx}" class="text-[#1E3B8B] font-extrabold" title="Edit Subject">✎</button> <button type="button" data-del-subj="${idx}" class="text-rose-600 font-extrabold" title="Remove Subject">×</button></span>`).join('')}
+                </div>
+              </form>
+
+              <form id="sylForm" class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2">
+                <h3 class="text-sm font-extrabold text-slate-900">+ Add Syllabus &amp; PDF (Google Drive Link)</h3>
+                <input type="text" id="sylTitle" required placeholder="Paper Title" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs font-bold bg-white" />
+                <div class="grid grid-cols-3 gap-2">
+                  <input type="text" id="sylCode" required placeholder="Code" class="px-2.5 py-2 rounded-xl border border-slate-300 text-xs bg-white" />
+                  <select id="sylSubj" class="px-2 py-2 rounded-xl border border-slate-300 text-xs bg-white">${subjOpts}</select>
+                  <select id="sylSem" class="px-2 py-2 rounded-xl border border-slate-300 text-xs bg-white">${semOpts}</select>
+                </div>
+                <input type="text" id="sylPdfUrl" placeholder="Google Drive PDF Link (https://drive.google.com/...)" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs bg-white" />
+                <label class="flex items-center justify-center gap-1.5 w-full py-1.5 rounded-xl border border-dashed border-[#1E3B8B]/50 bg-blue-50/50 text-[#1E3B8B] text-[11px] font-extrabold cursor-pointer">
+                  <i data-lucide="file-up" class="w-3.5 h-3.5"></i>
+                  <span>Or Upload Small PDF Directly</span>
+                  <input type="file" id="sylPdfFile" accept=".pdf,application/pdf" class="hidden" />
+                </label>
+                <textarea id="sylUnits" rows="2" required placeholder="Units (one per line)" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs bg-white"></textarea>
+                <button type="submit" class="w-full py-2 rounded-xl bg-[#1E3B8B] text-white text-xs font-extrabold">Save Syllabus &amp; Sync</button>
+              </form>
+              <div class="space-y-2">
+                ${(db.syllabus || []).map(s => `
+                  <div class="p-3 rounded-xl border border-slate-200 bg-white flex items-center justify-between gap-2">
+                    <div class="min-w-0 flex-1">
+                      <div class="text-xs font-extrabold text-slate-900 truncate">${s.paperCode}: ${s.title}</div>
+                      <div class="text-[10px] text-slate-500">${s.semester} • ${s.subject}</div>
+                    </div>
+                    <div class="flex items-center gap-1.5 shrink-0">
+                      <button type="button" data-edit-syl="${s.id}" class="px-2.5 py-1 rounded-lg bg-blue-50 text-[#1E3B8B] text-xs font-bold">Edit</button>
+                      <button type="button" data-del-syl="${s.id}" class="px-2.5 py-1 rounded-lg bg-rose-50 text-rose-600 text-xs font-bold">Delete</button>
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          </div>
+        `;
+
+        let uploadedNotImg = '';
+        document.getElementById('notImageFile').addEventListener('change', e => {
+          const f = e.target.files && e.target.files[0];
+          if (f) compressBannerImage(f, (dataUrl) => {
+            uploadedNotImg = dataUrl;
+            showToast('Notice image attached!', 'success');
+          });
+        });
+        document.getElementById('noticeForm').addEventListener('submit', e => {
+          e.preventDefault();
+          db.notices.unshift({
+            id: 'not-' + Date.now(),
+            title: document.getElementById('notTitle').value.trim(),
+            category: document.getElementById('notCat').value,
+            date: document.getElementById('notDate').value.trim(),
+            authority: 'Quorik Exam Desk',
+            description: document.getElementById('notDesc').value.trim(),
+            imageData: uploadedNotImg,
+            urgent: true
+          });
+          saveAndSync('Notice published!');
+        });
+        ws.querySelectorAll('[data-del-not]').forEach(b => b.addEventListener('click', () => { db.notices = db.notices.filter(x => x.id !== b.dataset.delNot); saveAndSync('Notice deleted!'); }));
+
+        document.getElementById('semMgrForm').addEventListener('submit', e => {
+          e.preventDefault();
+          if (!Array.isArray(db.syllabusSemesters)) db.syllabusSemesters = JSON.parse(JSON.stringify(DEFAULT_DB.syllabusSemesters));
+          db.syllabusSemesters.push({
+            id: 'sem-' + Date.now(),
+            name: document.getElementById('newSemName').value.trim(),
+            description: document.getElementById('newSemDesc').value.trim()
+          });
+          saveAndSync('Semester added!');
+        });
+        ws.querySelectorAll('[data-del-sem]').forEach(b => b.addEventListener('click', () => {
+          db.syllabusSemesters.splice(parseInt(b.dataset.delSem, 10), 1);
+          saveAndSync('Semester removed!');
+        }));
+
+        document.getElementById('subjMgrForm').addEventListener('submit', e => {
+          e.preventDefault();
+          const val = document.getElementById('newSubjName').value.trim();
+          if (!Array.isArray(db.subjects)) db.subjects = [...ARTS_SUBJECTS];
+          if (val && !db.subjects.includes(val)) db.subjects.push(val);
+          saveAndSync(`Added subject "${val}"!`);
+        });
+        ws.querySelectorAll('[data-edit-subj]').forEach(b => b.addEventListener('click', () => {
+          const idx = parseInt(b.dataset.editSubj, 10);
+          const oldName = db.subjects[idx];
+          const newName = prompt('Edit Subject Name:', oldName);
+          if (newName && newName.trim() && newName.trim() !== oldName) {
+            const clean = newName.trim();
+            db.subjects[idx] = clean;
+            (db.syllabus || []).forEach(x => { if (x.subject === oldName) x.subject = clean; });
+            (db.notes || []).forEach(x => { if (x.subject === oldName) x.subject = clean; });
+            (db.qna || []).forEach(x => { if (x.subject === oldName) x.subject = clean; });
+            saveAndSync(`Renamed "${oldName}" to "${clean}"!`);
+          }
+        }));
+        ws.querySelectorAll('[data-del-subj]').forEach(b => b.addEventListener('click', () => {
+          db.subjects.splice(parseInt(b.dataset.delSubj, 10), 1);
+          saveAndSync('Subject removed!');
+        }));
+
+        let uploadedSylPdfData = '';
+        document.getElementById('sylPdfFile').addEventListener('change', e => {
+          const f = e.target.files && e.target.files[0];
+          if (f) readPdfAsDataUrl(f, (dataUrl) => {
+            uploadedSylPdfData = dataUrl;
+            showToast('Syllabus PDF attached!', 'success');
+          });
+        });
+        const editS = editingSylId ? (db.syllabus || []).find(s => s.id === editingSylId) : null;
+        if (editS) {
+          document.getElementById('sylTitle').value = editS.title;
+          document.getElementById('sylCode').value = editS.paperCode;
+          document.getElementById('sylSubj').value = editS.subject;
+          document.getElementById('sylSem').value = editS.semester;
+          document.getElementById('sylPdfUrl').value = editS.pdfUrl || '';
+          document.getElementById('sylUnits').value = (editS.units || []).join('\n');
+          document.querySelector('#sylForm button[type="submit"]').textContent = 'Update Syllabus & Sync';
+        }
+        document.getElementById('sylForm').addEventListener('submit', e => {
+          e.preventDefault();
+          const obj = {
+            id: editS ? editS.id : 'syl-' + Date.now(),
+            title: document.getElementById('sylTitle').value.trim(),
+            paperCode: document.getElementById('sylCode').value.trim(),
+            subject: document.getElementById('sylSubj').value,
+            semester: document.getElementById('sylSem').value,
+            pdfUrl: uploadedSylPdfData || document.getElementById('sylPdfUrl').value.trim(),
+            credits: '4 Credits',
+            units: document.getElementById('sylUnits').value.split('\n').map(x => x.trim()).filter(Boolean)
+          };
+          if (editS) {
+            const idx = db.syllabus.findIndex(x => x.id === editS.id);
+            if (idx >= 0) db.syllabus[idx] = obj;
+            editingSylId = null;
+            saveAndSync('Syllabus updated!');
+          } else {
+            db.syllabus.unshift(obj);
+            saveAndSync('Syllabus & PDF saved!');
+          }
+        });
+        ws.querySelectorAll('[data-edit-syl]').forEach(b => b.addEventListener('click', () => { editingSylId = b.dataset.editSyl; renderApp(); }));
+        ws.querySelectorAll('[data-del-syl]').forEach(b => b.addEventListener('click', () => { db.syllabus = db.syllabus.filter(x => x.id !== b.dataset.delSyl); saveAndSync('Syllabus deleted!'); }));
+      }
+
+
+      // 7. FESTIVALS & HOLIDAYS CARDS TAB (Add, Upload Image, Remove — Syncs Real-Time)
+      else if (activeTab === 'events') {
+        const festList = db.festivals || [];
+        const holList = db.holidays || [];
+        ws.innerHTML = `
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+            <form id="eventCardForm" class="lg:col-span-5 bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-2.5">
+              <h3 class="text-sm font-extrabold text-slate-900">+ Add Festival / Holiday Card</h3>
+              <select id="evType" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs font-bold bg-white">
+                <option value="festivals">Festival Card</option>
+                <option value="holidays">Holiday Card</option>
+              </select>
+              <input type="text" id="evTitle" required placeholder="Card Title (e.g. Bohag Bihu)" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs font-bold bg-white" />
+              <input type="text" id="evDate" required placeholder="Date (e.g. 14–16 April)" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs font-semibold bg-white" />
+              <textarea id="evDesc" rows="3" required placeholder="Short Description..." class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs bg-white"></textarea>
+              <div id="evImgPreviewWrap" class="hidden relative h-24 rounded-xl overflow-hidden border border-slate-300">
+                <img id="evImgPreview" src="" class="w-full h-full object-cover" />
+              </div>
+              <label class="flex items-center justify-center gap-1.5 w-full py-2 rounded-xl border border-dashed border-[#1E3B8B]/50 bg-blue-50/50 hover:bg-blue-50 text-[#1E3B8B] text-xs font-extrabold cursor-pointer transition">
+                <i data-lucide="image-plus" class="w-4 h-4"></i>
+                <span>Upload Thumbnail Image</span>
+                <input type="file" id="evImageFile" accept="image/*" class="hidden" />
+              </label>
+              <label class="flex items-center justify-center gap-1.5 w-full py-2 rounded-xl border border-dashed border-teal-600/50 bg-teal-50/50 hover:bg-teal-50 text-teal-800 text-xs font-extrabold cursor-pointer transition">
+                <i data-lucide="images" class="w-4 h-4"></i>
+                <span>Upload Extra Gallery Images (Multiple)</span>
+                <input type="file" id="evExtraImagesInput" accept="image/*" multiple class="hidden" />
+              </label>
+              <div id="evExtraCountText" class="hidden text-[11px] font-bold text-teal-700 text-center"></div>
+              <button type="submit" class="w-full py-2.5 rounded-xl bg-[#1E3B8B] hover:bg-[#14296B] text-white text-xs font-extrabold">
+                Add Card &amp; Sync
+              </button>
+            </form>
+
+            <div class="lg:col-span-7 space-y-4">
+              <div class="space-y-2">
+                <h3 class="text-sm font-extrabold text-rose-700">Festivals Cards (${festList.length})</h3>
+                ${festList.map(f => `
+                  <div class="p-3 rounded-2xl border border-slate-200 bg-white flex items-center justify-between gap-3">
+                    <div class="flex items-center gap-3 min-w-0 flex-1">
+                      ${f.imageData ? `<img src="${f.imageData}" class="w-14 h-11 rounded-xl object-cover shrink-0" />` : `<div class="w-14 h-11 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center shrink-0"><i data-lucide="sparkles" class="w-4 h-4"></i></div>`}
+                      <div class="min-w-0 flex-1">
+                        <div class="text-xs font-extrabold text-slate-900 truncate">${f.title} (${f.date})</div>
+                        <div class="text-[11px] text-slate-500 truncate">${f.description || f.desc || ''}</div>
+                      </div>
+                    </div>
+                    <button type="button" data-del-ev-type="festivals" data-del-ev-id="${f.id}" class="px-3 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-600 hover:text-white text-rose-600 text-xs font-bold shrink-0 transition">Remove</button>
+                  </div>
+                `).join('')}
+              </div>
+
+              <div class="space-y-2 pt-2 border-t border-slate-200">
+                <h3 class="text-sm font-extrabold text-emerald-700">Holidays Cards (${holList.length})</h3>
+                ${holList.map(h => `
+                  <div class="p-3 rounded-2xl border border-slate-200 bg-white flex items-center justify-between gap-3">
+                    <div class="flex items-center gap-3 min-w-0 flex-1">
+                      ${h.imageData ? `<img src="${h.imageData}" class="w-14 h-11 rounded-xl object-cover shrink-0" />` : `<div class="w-14 h-11 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0"><i data-lucide="calendar-days" class="w-4 h-4"></i></div>`}
+                      <div class="min-w-0 flex-1">
+                        <div class="text-xs font-extrabold text-slate-900 truncate">${h.title} (${h.date})</div>
+                        <div class="text-[11px] text-slate-500 truncate">${h.description || h.desc || ''}</div>
+                      </div>
+                    </div>
+                    <button type="button" data-del-ev-type="holidays" data-del-ev-id="${h.id}" class="px-3 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-600 hover:text-white text-rose-600 text-xs font-bold shrink-0 transition">Remove</button>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          </div>
+        `;
+
+        let uploadedEvImg = '';
+        let uploadedExtraImgs = [];
+        document.getElementById('evExtraImagesInput').addEventListener('change', e => {
+          const files = Array.from(e.target.files || []);
+          files.forEach(file => {
+            compressBannerImage(file, (dataUrl) => {
+              uploadedExtraImgs.push(dataUrl);
+              const txt = document.getElementById('evExtraCountText');
+              txt.textContent = `${uploadedExtraImgs.length} extra photo(s) ready`;
+              txt.classList.remove('hidden');
+            });
+          });
+        });
+        document.getElementById('evImageFile').addEventListener('change', e => {
+          const file = e.target.files && e.target.files[0];
+          if (!file) return;
+          compressBannerImage(file, (dataUrl) => {
+            uploadedEvImg = dataUrl;
+            document.getElementById('evImgPreview').src = dataUrl;
+            document.getElementById('evImgPreviewWrap').classList.remove('hidden');
+            showToast('Image ready!', 'success');
+          });
+        });
+
+        document.getElementById('eventCardForm').addEventListener('submit', e => {
+          e.preventDefault();
+          const targetKey = document.getElementById('evType').value;
+          if (!Array.isArray(db[targetKey])) db[targetKey] = [];
+          db[targetKey].unshift({
+            id: (targetKey === 'festivals' ? 'fest-' : 'hol-') + Date.now(),
+            title: document.getElementById('evTitle').value.trim(),
+            date: document.getElementById('evDate').value.trim(),
+            description: document.getElementById('evDesc').value.trim(),
+            imageData: uploadedEvImg,
+            extraImages: uploadedExtraImgs
+          });
+          saveAndSync('Card added & synced!');
+        });
+
+        ws.querySelectorAll('[data-del-ev-id]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const t = btn.dataset.delEvType;
+            const id = btn.dataset.delEvId;
+            db[t] = (db[t] || []).filter(x => x.id !== id);
+            saveAndSync('Card removed & synced!');
+          });
+        });
+      }
+
+      if (window.lucide) lucide.createIcons();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const pwdInp = document.getElementById('adminPasswordInput');
+      document.getElementById('togglePwdBtn').addEventListener('click', () => {
+        pwdInp.type = pwdInp.type === 'password' ? 'text' : 'password';
+      });
+
+      document.getElementById('loginForm').addEventListener('submit', e => {
+        e.preventDefault();
+        if (pwdInp.value.trim() === ADMIN_PASSWORD) {
+          document.getElementById('loginScreen').classList.add('hidden');
+          document.getElementById('adminApp').classList.remove('hidden');
+          db = loadDb();
+          renderApp();
+        } else {
+          document.getElementById('loginErrorMsg').classList.remove('hidden');
+        }
+      });
+
+      document.getElementById('logoutBtn').addEventListener('click', () => {
+        pwdInp.value = '';
+        document.getElementById('loginErrorMsg').classList.add('hidden');
+        document.getElementById('adminApp').classList.add('hidden');
+        document.getElementById('loginScreen').classList.remove('hidden');
+      });
+
+      document.getElementById('backToAdminHomeBtn').addEventListener('click', () => {
+        activeTab = 'home';
+        renderApp();
+      });
+
+      document.getElementById('exportBackupBtn').addEventListener('click', () => {
+        const blob = new Blob([JSON.stringify(db, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'quorik_by_bobi_backup.json';
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(() => { document.body.removeChild(a); URL.revokeObjectURL(url); }, 300);
+      });
+
+      document.getElementById('importBackupInput').addEventListener('change', e => {
+        const file = e.target.files && e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = () => {
+          try {
+            const parsed = JSON.parse(reader.result);
+            db = parsed;
+            saveAndSync('Imported backup & synced!');
+          } catch (err) {
+            showToast('Invalid JSON file!');
+          }
+        };
+        reader.readAsText(file);
+      });
+
+      if (window.lucide) lucide.createIcons();
+    });
+  </script>
+</body>
+</html>

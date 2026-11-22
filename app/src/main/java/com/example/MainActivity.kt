@@ -10,31 +10,25 @@ import androidx.activity.SystemBarStyle
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.fadeOut
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.data.PdfExportUtil
 import com.example.ui.components.*
 import com.example.ui.screens.*
 import com.example.ui.theme.*
+import com.example.viewmodel.AdminSection
 import com.example.viewmodel.AppTab
 import com.example.viewmodel.QuorikViewModel
 import kotlinx.coroutines.launch
+import java.io.File
 import java.util.Locale
 
 class MainActivity : ComponentActivity(), TextToSpeech.OnInitListener {
@@ -117,9 +111,9 @@ private fun QuorikAppRoot(
     val snackbarHostState = remember { SnackbarHostState() }
     val scope = rememberCoroutineScope()
 
-    // Stop TTS when leaving Study Reader
-    LaunchedEffect(state.activeReaderNoteId, state.activeReaderTopicIdx, state.activeTab) {
-        if (state.activeReaderNoteId == null || state.activeTab != AppTab.NOTES) {
+    // Stop TTS when leaving Study Reader or switching to Admin Panel
+    LaunchedEffect(state.isAdminAppMode, state.activeReaderNoteId, state.activeReaderTopicIdx, state.activeTab) {
+        if (state.isAdminAppMode || state.activeReaderNoteId == null || state.activeTab != AppTab.NOTES) {
             onStopAudio()
         }
     }
@@ -133,17 +127,15 @@ private fun QuorikAppRoot(
         }
     }
 
-    // Handle Android Back button across Drawer, Modals, Full-screen Reader, and drill-down views
-    val shouldInterceptBack = drawerState.isOpen ||
-        state.activePdfModal != null ||
-        state.activeEventDetail != null ||
-        state.showAddSidebarPageModal ||
-        state.showAdminPinModal ||
-        state.showBookmarksModal ||
-        state.activeTab != AppTab.HOME
+    // Handle Android Back button cleanly in both Admin Panel and Student Portal
+    val shouldInterceptBack = if (state.isAdminAppMode) {
+        state.adminUnlocked && state.adminActiveSection != AdminSection.HOME
+    } else {
+        true
+    }
 
     BackHandler(enabled = shouldInterceptBack) {
-        if (drawerState.isOpen) {
+        if (!state.isAdminAppMode && drawerState.isOpen) {
             scope.launch { drawerState.close() }
         } else {
             onStopAudio()
@@ -151,8 +143,28 @@ private fun QuorikAppRoot(
         }
     }
 
+    // Helper to open either a local uploaded PDF file or a web/Google Drive PDF URL
+    fun openExternalOrLocalPdf(title: String, pdfUrl: String, fallbackGenerate: () -> Unit) {
+        when {
+            pdfUrl.isBlank() -> fallbackGenerate()
+            File(pdfUrl).exists() -> {
+                val ok = PdfExportUtil.openLocalPdfFile(context, pdfUrl, title)
+                if (!ok) viewModel.showToast("Could not open local PDF")
+            }
+            else -> viewModel.openPdfModal(title, pdfUrl)
+        }
+    }
+
+    if (state.isAdminAppMode) {
+        AdminPanelRoot(
+            state = state,
+            viewModel = viewModel,
+            snackbarHostState = snackbarHostState
+        )
+        return
+    }
+
     val isFullScreenReader = state.activeTab == AppTab.NOTES && state.activeReaderNoteId != null
-    val showBottomBar = !isFullScreenReader && state.activeTab != AppTab.ADMIN
 
     Box(modifier = Modifier.fillMaxSize()) {
         ModalNavigationDrawer(
@@ -183,7 +195,7 @@ private fun QuorikAppRoot(
                     }
                 },
                 bottomBar = {
-                    if (showBottomBar) {
+                    if (!isFullScreenReader) {
                         QuorikBottomNavBar(
                             activeTab = state.activeTab,
                             onSelectTab = { viewModel.switchTab(it, true) }
@@ -210,7 +222,9 @@ private fun QuorikAppRoot(
                             onOpenNote = { viewModel.openStudyReader(it, 0) },
                             onOpenQna = { viewModel.openQnaDetail(it) },
                             onOpenSyllabus = { sem, subj -> viewModel.openSyllabusPaper(sem, subj) },
-                            onOpenEventDetail = { title, date, desc -> viewModel.openEventDetail(title, date, desc) }
+                            onOpenEventDetail = { title, date, desc, img, extra ->
+                                viewModel.openEventDetail(title, date, desc, img, extra)
+                            }
                         )
 
                         AppTab.NOTES -> NotesScreen(
@@ -237,9 +251,7 @@ private fun QuorikAppRoot(
                             onDeleteMarginNote = { id, idx, mIdx -> viewModel.deleteMarginNote(id, idx, mIdx) },
                             onRateNote = { id, stars -> viewModel.rateItem(id, stars) },
                             onDownloadNotePdf = { note ->
-                                if (note.pdfUrl.isNotBlank()) {
-                                    viewModel.openPdfModal(note.title, note.pdfUrl)
-                                } else {
+                                openExternalOrLocalPdf(note.title, note.pdfUrl) {
                                     val sections = note.topics.map {
                                         PdfExportUtil.PdfSection(it.title, it.content)
                                     }.ifEmpty {
@@ -305,9 +317,7 @@ private fun QuorikAppRoot(
                             onSelectSubject = { viewModel.selectSyllabusSubject(it) },
                             onRateSyllabus = { id, stars -> viewModel.rateItem(id, stars) },
                             onOpenSyllabusPdf = { syl ->
-                                if (syl.pdfUrl.isNotBlank()) {
-                                    viewModel.openPdfModal("${syl.paperCode}: ${syl.title}", syl.pdfUrl)
-                                } else {
+                                openExternalOrLocalPdf("${syl.paperCode}: ${syl.title}", syl.pdfUrl) {
                                     val ok = PdfExportUtil.exportAndSharePdf(
                                         context = context,
                                         title = "${syl.paperCode}: ${syl.title}",
@@ -330,7 +340,7 @@ private fun QuorikAppRoot(
                             onBack = { viewModel.switchTab(AppTab.HOME) },
                             onSelectCategory = { viewModel.selectNoticeCategory(it) },
                             onOpenDetail = { n ->
-                                viewModel.openEventDetail(n.title, "${n.category} • ${n.date}", n.description)
+                                viewModel.openEventDetail(n.title, "${n.category} • ${n.date}", n.description, n.imagePath)
                             },
                             onDownloadNoticePdf = { n ->
                                 val ok = PdfExportUtil.exportAndSharePdf(
@@ -353,7 +363,9 @@ private fun QuorikAppRoot(
                             events = state.db.festivals,
                             isFestival = true,
                             onBack = { viewModel.switchTab(AppTab.HOME) },
-                            onOpenEvent = { ev -> viewModel.openEventDetail(ev.title, "Date: ${ev.date}", ev.description) }
+                            onOpenEvent = { ev ->
+                                viewModel.openEventDetail(ev.title, "Date: ${ev.date}", ev.description, ev.imagePath, ev.extraImages)
+                            }
                         )
 
                         AppTab.HOLIDAYS -> EventsCalendarScreen(
@@ -365,7 +377,9 @@ private fun QuorikAppRoot(
                             events = state.db.holidays,
                             isFestival = false,
                             onBack = { viewModel.switchTab(AppTab.HOME) },
-                            onOpenEvent = { ev -> viewModel.openEventDetail(ev.title, "Date: ${ev.date}", ev.description) }
+                            onOpenEvent = { ev ->
+                                viewModel.openEventDetail(ev.title, "Date: ${ev.date}", ev.description, ev.imagePath, ev.extraImages)
+                            }
                         )
 
                         AppTab.PAGE -> {
@@ -394,50 +408,12 @@ private fun QuorikAppRoot(
                                 )
                             }
                         }
-
-                        AppTab.ADMIN -> AdminScreen(
-                            state = state,
-                            onSelectAdminTab = { viewModel.selectAdminTab(it) },
-                            onExitToStudent = { viewModel.switchTab(AppTab.HOME) },
-                            onResetDefaults = { viewModel.resetToDefaults() },
-                            onExportJson = {
-                                val json = viewModel.exportDatabaseJson()
-                                val ok = PdfExportUtil.exportAndShareJsonBackup(context, json)
-                                viewModel.showToast(if (ok) "Exported quorik_cms_backup.json" else "Export failed")
-                            },
-                            onCopyLink = { link ->
-                                PdfExportUtil.copyToClipboard(context, "Quorik Link", link)
-                                viewModel.rememberCopiedLink(link)
-                                viewModel.showToast("Copied: $link")
-                            },
-                            onReadClipboardOrLast = {
-                                PdfExportUtil.readFromClipboard(context)?.takeIf { it.isNotBlank() }
-                                    ?: state.lastCopiedLink
-                            },
-                            onSaveBanners = { viewModel.saveBanners(it) },
-                            onSavePage = { t, sl, url, c -> viewModel.addOrUpdateCustomPage(t, sl, url, c) },
-                            onUpdatePageUrl = { id, url -> viewModel.updatePageExternalUrl(id, url) },
-                            onDeletePage = { viewModel.deleteCustomPage(it) },
-                            onViewPage = { viewModel.openCustomPage(it) },
-                            onAddNote = { t, c, s, sem, med, unit, sum, body ->
-                                viewModel.addNote(t, c, s, sem, med, unit, sum, body)
-                            },
-                            onDeleteNote = { viewModel.deleteNote(it) },
-                            onAddQna = { s, sem, m, med, q, a -> viewModel.addQna(s, sem, m, med, q, a) },
-                            onDeleteQna = { viewModel.deleteQna(it) },
-                            onAddMcq = { s, q, opts, ci, exp -> viewModel.addMcq(s, q, opts, ci, exp) },
-                            onDeleteMcq = { viewModel.deleteMcq(it) },
-                            onAddSyllabus = { t, c, cr, s, sem, u -> viewModel.addSyllabus(t, c, cr, s, sem, u) },
-                            onDeleteSyllabus = { viewModel.deleteSyllabus(it) },
-                            onAddNotice = { t, cat, d, auth, desc -> viewModel.addNotice(t, cat, d, auth, desc) },
-                            onDeleteNotice = { viewModel.deleteNotice(it) }
-                        )
                     }
                 }
             }
         }
 
-        // Modals
+        // Student App Modals
         if (state.showBookmarksModal) {
             val savedNotes = state.db.notes.filter { state.userPrefs.bookmarks.contains(it.id) }
             BookmarksDialog(
@@ -450,18 +426,10 @@ private fun QuorikAppRoot(
             )
         }
 
-        if (state.showAdminPinModal) {
-            AdminPinDialog(
-                hasError = state.adminPinError,
-                onVerify = { viewModel.verifyAdminPin(it) },
-                onDismiss = { viewModel.closeAdminPinModal() }
-            )
-        }
-
         if (state.showAddSidebarPageModal) {
             AddSidebarPageDialog(
                 onSave = { title, url, content ->
-                    viewModel.addOrUpdateCustomPage(title, "", url, content)
+                    viewModel.upsertCustomPage(null, title, "", url, content)
                 },
                 onDismiss = { viewModel.setShowAddSidebarPageModal(false) }
             )
@@ -479,42 +447,6 @@ private fun QuorikAppRoot(
                 pdfModal = pdf,
                 onDismiss = { viewModel.closePdfModal() }
             )
-        }
-
-        // 2-Second Branded Text-Only Splash Screen
-        AnimatedVisibility(
-            visible = state.showSplash,
-            exit = fadeOut()
-        ) {
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(QuorikBluePrimary)
-                    .clickable { viewModel.dismissSplash() }
-                    .padding(24.dp),
-                contentAlignment = Alignment.Center
-            ) {
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.spacedBy(8.dp)
-                ) {
-                    Text(
-                        text = "Quorik",
-                        style = MaterialTheme.typography.displayLarge.copy(
-                            fontSize = 48.sp,
-                            fontWeight = FontWeight.ExtraBold
-                        ),
-                        color = Color.White,
-                        textAlign = TextAlign.Center
-                    )
-                    Text(
-                        text = "BA Arts Free Notes & Question Answer",
-                        style = MaterialTheme.typography.titleSmall,
-                        color = QuorikBlueTint,
-                        textAlign = TextAlign.Center
-                    )
-                }
-            }
         }
     }
 }
